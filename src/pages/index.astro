@@ -5,6 +5,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<script is:inline src="/change.JS"></script>
 		<link rel="icon" type="image/svg+xml" href="/images/dude.webp" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
@@ -14,7 +15,12 @@
 		<main>
 			<section>
 				<span>
-					<img src="/images/dude.webp" alt="Image of Dude_000" />
+					<a href="/"
+						><img
+							src="/images/dude.webp"
+							alt="Image of Dude_000"
+						/></a
+					>
 				</span>
 				<ul>
 					<li><button id="Home">Home</button></li>
@@ -24,7 +30,7 @@
 				</ul>
 			</section>
 			<div>
-				<iframe src="/pages/home.php">XD</iframe>
+				<iframe id="iframe" src="/pages/home.astro">XD</iframe>
 			</div>
 		</main>
 	</body>
@@ -44,6 +50,8 @@
 		background-size: 150px 150px;
 		background-repeat: repeat;
 		animation: bg-anim 300s infinite linear;
+		height: 100vh;
+		overflow-y: hidden;
 	}
 
 	main {
@@ -92,6 +100,7 @@
 		align-items: center;
 		border: 3px solid black;
 		border-bottom: none;
+		cursor: pointer;
 	}
 
 	button:hover {
@@ -100,6 +109,11 @@
 
 	button:active {
 		background: rgba(89, 89, 89, 0.7);
+		color: white;
+	}
+
+	.buttonon {
+		background: rgba(32, 32, 32, 0.7);
 		color: white;
 	}
 
