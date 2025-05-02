@@ -6,24 +6,40 @@ document.addEventListener("DOMContentLoaded", () => {
     const homeBtn = document.getElementById("Home");
     homeBtn.addEventListener("click", () => {
         page = "Home";
+        homeBtn.className = "buttonon";
+        projectsBtn.className = "";
+        videosBtn.className = "";
+        faqBtn.className = "";
         updatePage();
     });
 
     const projectsBtn = document.getElementById("Projects");
     projectsBtn.addEventListener("click", () => {
         page = "Projects";
+        homeBtn.className = "";
+        projectsBtn.className = "buttonon";
+        videosBtn.className = "";
+        faqBtn.className = "";
         updatePage();
     });
 
     const videosBtn = document.getElementById("Videos");
     videosBtn.addEventListener("click", () => {
         page = "Videos";
+        homeBtn.className = "";
+        projectsBtn.className = "";
+        videosBtn.className = "buttonon";
+        faqBtn.className = "";
         updatePage();
     });
 
     const faqBtn = document.getElementById("FAQ");
     faqBtn.addEventListener("click", () => {
         page = "FAQ";
+        homeBtn.className = "";
+        projectsBtn.className = "";
+        videosBtn.className = "";
+        faqBtn.className = "buttonon";
         updatePage();
     });
 

@@ -1,0 +1,57 @@
+<script is:inline src="/js/language.JS"></script>
+<section>
+    <button class="xd" id="language">Languages</button>
+    <div id="langList" class="none">
+        <button class="language" id="en-en">English</button>
+        <button class="language" id="es-es">Español (Espanya)</button>
+        <button class="language" id="es-la">Español (Latinoamerica)</button>
+        <button class="language" id="es-na">Español (Nacho)</button>
+        <button class="language" id="ca-an">Català (Andorra)</button>
+        <button class="language" id="ca-ca">Català (Catalunya)</button>
+        <button class="language" id="en-lo">LolCat</button>
+    </div>
+</section>
+
+<style>
+    section {
+        display: flex;
+        flex-direction: column;
+        z-index: 1000;
+    }
+
+    div {
+        max-height: 166px;
+        overflow-y: scroll;
+    }
+
+    button {
+        display: flex;
+        justify-content: center;
+        border: 3px solid black;
+        padding: 15px 0px;
+        width: 200px;
+    }
+
+    .language {
+        border-top: none;
+    }
+
+    .languageSelected {
+        border-top: none;
+        background: rgba(69, 69, 69, 0.7);
+        color: white;
+    }
+
+    .languageSelected:hover {
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f10000;
+    }
+
+    .xd {
+        margin-right: 15px;
+    }
+</style>
