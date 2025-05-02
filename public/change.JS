@@ -35,19 +35,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
             case "Projects":
                 document.title = "Projects - Dude_000";
-                iframe.src = "/pages/projects.astro";
+                iframe.src = "/pages/projects.html";
                 break;
             case "Videos":
                 document.title = "Videos - Dude_000";
-                iframe.src = "/pages/videos.astro";
+                iframe.src = "/pages/videos.html";
                 break;
             case "FAQ":
                 document.title = "FAQ - Dude_000";
-                iframe.src = "/pages/faq.astro";
+                iframe.src = "/pages/faq.html";
                 break;
             default:
                 document.title = "Not Found - Dude_000"
-                iframe.src = "/pages/404.astro"
+                iframe.src = "/pages/404.html"
         }
     }
 });
