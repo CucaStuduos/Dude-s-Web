@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         switch (page) {
             case "Home":
                 document.title = "Home - Dude_000";
-                iframe.src = "/pages/home.astro";
+                iframe.src = "/pages/home.html";
                 break;
             case "Projects":
                 document.title = "Projects - Dude_000";
