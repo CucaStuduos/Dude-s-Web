@@ -1,20 +1,26 @@
 ---
 import { getCollection } from "astro:content";
-const langs = await getCollection('langs');
+const langs = await getCollection("langs");
+
+const { Lang } = Astro.props;
 ---
 
 <script is:inline src="/js/language.JS"></script>
 <section>
-    <button class="xd" id="language">Languages</button>
+    <button class="xd" id="language">{Lang}</button>
     <div id="langList" class="none">
-        {langs.map(lang => {
-            const { slug, data } = lang;
-            const { language, code } = data;
+        {
+            langs.map((lang) => {
+                const { slug, data } = lang;
+                const { language, code } = data;
 
-            return (
-                <button class="language" id={code}>{language}</button>
-            );
-        })}
+                return (
+                    <button class="language" id={code}>
+                        {language}
+                    </button>
+                );
+            })
+        }
     </div>
 </section>
 
@@ -30,6 +36,7 @@ const langs = await getCollection('langs');
         overflow-y: scroll;
         border-bottom: 3px solid black;
         animation: openMenu 0.05s linear;
+        flex-direction: column;
     }
 
     .divClose {

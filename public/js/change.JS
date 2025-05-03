@@ -1,6 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const iframe = document.getElementById("iframe")
+    const iframe = document.getElementById("iframe");
+    const currentLang = document.cookie.split("; ").find(row => row.startsWith("lang="))?.split("=")[1] || "en-en";
     let page = "Home";
+    const loading = document.getElementById("loading");
+    let home = "";
+    let projects = "";
+    let videos = "";
+    let faq = "";
+
+
     updatePage();
 
     const homeBtn = document.getElementById("Home");
@@ -44,26 +52,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function updatePage() {
+        loading.classList.remove("none");
         switch (page) {
             case "Home":
                 document.title = "Home - Dude_000";
-                iframe.src = "/pages/home.html";
+                iframe.src = "/pages/" + currentLang + "/home.html";
                 break;
             case "Projects":
                 document.title = "Projects - Dude_000";
-                iframe.src = "/pages/projects.html";
+                iframe.src = "/pages/" + currentLang + "/projects.html";
                 break;
             case "Videos":
                 document.title = "Videos - Dude_000";
-                iframe.src = "/pages/videos.html";
+                iframe.src = "/pages/" + currentLang + "/videos.html";
                 break;
             case "FAQ":
                 document.title = "FAQ - Dude_000";
-                iframe.src = "/pages/faq.html";
+                iframe.src = "/pages/" + currentLang + "/faq.html";
                 break;
             default:
                 document.title = "Not Found - Dude_000"
-                iframe.src = "/pages/404.html"
+                iframe.src = "/pages/" + currentLang + "/404.html"
         }
     }
+    iframe.addEventListener("load", () => {
+        loading.classList.add("none");
+    });
+
+    iframe.addEventListener("loadeddata", () =>{
+        loading.classList.add("none");
+    })
 });

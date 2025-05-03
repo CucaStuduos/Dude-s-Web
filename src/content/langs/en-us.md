@@ -4,6 +4,6 @@ code: en-us
 homeBtn: Home
 projectsBtn: Projects
 videosBtn: Videos
-faqBtn: FAQ
+faqBtn: FAQ 
 languagesBtn: Languages
 ---

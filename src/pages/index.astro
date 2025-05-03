@@ -1,5 +1,29 @@
 ---
+export const prerender = false;
+import { getCollection } from "astro:content";
 import LanguageSelect from "../components/languageSelect.astro";
+import { date } from "astro:schema";
+
+const currentLang = Astro.cookies.get("lang")?.value;
+let homeBtn = "";
+let projectsBtn = "";
+let videosBtn = "";
+let faqBtn = "";
+let languagesBtn = "";
+const langs = await getCollection("langs");
+
+langs.map((lang) => {
+	const { data, slug } = lang;
+	const { code } = data;
+
+	if (code === currentLang) {
+		homeBtn = data.homeBtn;
+		projectsBtn = data.projectsBtn;
+		videosBtn = data.videosBtn;
+		faqBtn = data.faqBtn;
+		languagesBtn = data.languagesBtn;
+	}
+});
 ---
 
 <html lang="en">
@@ -9,10 +33,10 @@ import LanguageSelect from "../components/languageSelect.astro";
 		<link rel="icon" type="image/svg+xml" href="/images/dude.webp" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>? - Dude_000</title>
+		<title>Dude_000</title>
 	</head>
 	<body>
-		<aside><LanguageSelect /></aside>
+		<aside><LanguageSelect Lang={languagesBtn} /></aside>
 		<main>
 			<section>
 				<span>
@@ -24,16 +48,27 @@ import LanguageSelect from "../components/languageSelect.astro";
 					>
 				</span>
 				<ul>
-					<li><button id="Home">Home</button></li>
-					<li><button id="Projects">Projects</button></li>
-					<li><button id="Videos">Videos</button></li>
-					<li><button id="FAQ">FAQ</button></li>
+					<li>
+						<button class="buttonon" id="Home">{homeBtn}</button>
+					</li>
+					<li><button id="Projects">{projectsBtn}</button></li>
+					<li><button id="Videos">{videosBtn}</button></li>
+					<li><button id="FAQ">{faqBtn}</button></li>
 				</ul>
 			</section>
 			<div>
-				<iframe title="page" id="iframe" src="/pages/home.html"
-					>XD</iframe
+				<iframe
+					title="page"
+					id="iframe"
+					src=`/pages/${currentLang}/home.html`
 				>
+				</iframe>
+				<img
+					id="loading"
+					class=""
+					src="/images/loading.gif"
+					alt="Loading..."
+				/>
 			</div>
 		</main>
 	</body>
@@ -69,6 +104,12 @@ import LanguageSelect from "../components/languageSelect.astro";
 	main {
 		width: 85%;
 		margin: 19.9px;
+	}
+
+	div {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	div iframe {
@@ -133,7 +174,18 @@ import LanguageSelect from "../components/languageSelect.astro";
 		color: white;
 	}
 
-	.none{
+	#loading {
+		position: absolute;
+		width: 70%;
+		height: auto;
+		top: 150px;
+		z-index: 999;
+		border: none;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.none {
 		display: none;
 	}
 
@@ -149,20 +201,20 @@ import LanguageSelect from "../components/languageSelect.astro";
 		}
 	}
 
-	@media (max-width: 1042px) {
+	@media (max-width: 1100px) {
 		section ul {
 			gap: 25px;
 		}
 	}
 
-	@media (max-width: 954px) {
+	@media (max-width: 1024px) {
 		section ul {
 			gap: 10px;
 			padding-left: 20px;
 		}
 	}
 
-	@media (max-width: 877px) {
+	@media (max-width: 890px) {
 		section ul {
 			display: none;
 		}

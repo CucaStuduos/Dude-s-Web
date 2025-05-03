@@ -41,13 +41,13 @@ document.addEventListener("DOMContentLoaded", () => {
             languages.forEach(lang => lang.classList.remove("languageSelected"));
             language.classList.add("languageSelected");
             document.cookie = "lang=" + language.id;
-        });
+            location.reload();
+                });
     });
 
-    //Reload Lang
-    const actualLang = document.cookie.split("; ").find(row => row.startsWith("lang="))?.split("=")[1] || "defaultLang";
+    const currentLang = document.cookie.split("; ").find(row => row.startsWith("lang="))?.split("=")[1] || "en-en";
     languages.forEach(language => {
-        if (language.id === actualLang){
+        if (language.id === currentLang){
             language.classList.add("languageSelected");
         }
         else{
@@ -56,3 +56,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+

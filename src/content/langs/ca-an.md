@@ -1,9 +1,9 @@
 ---
 language: Català (Andorra)
 code: ca-an
-homeBtn: Inici
+homeBtn: Inici(😎)
 projectsBtn: Gaming
-videosBtn: Youtuber
-faqBtn: FAQ Impostos
-languagesBtn: Languages FTW
+videosBtn: Youtube
+faqBtn: FAQ(🥸)
+languagesBtn: Languages(FTW 🌍)
 ---
