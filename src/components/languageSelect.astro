@@ -1,14 +1,20 @@
+---
+import { getCollection } from "astro:content";
+const langs = await getCollection('langs');
+---
+
 <script is:inline src="/js/language.JS"></script>
 <section>
     <button class="xd" id="language">Languages</button>
     <div id="langList" class="none">
-        <button class="language" id="en-en">English</button>
-        <button class="language" id="es-es">Español (Espanya)</button>
-        <button class="language" id="es-la">Español (Latinoamerica)</button>
-        <button class="language" id="es-na">Español (Nacho)</button>
-        <button class="language" id="ca-an">Català (Andorra)</button>
-        <button class="language" id="ca-ca">Català (Catalunya)</button>
-        <button class="language" id="en-lo">LolCat</button>
+        {langs.map(lang => {
+            const { slug, data } = lang;
+            const { language, code } = data;
+
+            return (
+                <button class="language" id={code}>{language}</button>
+            );
+        })}
     </div>
 </section>
 
@@ -20,10 +26,14 @@
     }
 
     div {
-        max-height: 172px;
+        max-height: 165px;
         overflow-y: scroll;
-        background: rgba(255, 255, 255, 0.7);
-		backdrop-filter: blur(5px);
+        border-bottom: 3px solid black;
+        animation: openMenu 0.05s linear;
+    }
+
+    .divClose {
+        animation: closeMenu 0.05s linear;
     }
 
     button {
@@ -49,11 +59,60 @@
         color: white;
     }
 
-    ::-webkit-scrollbar-track {
-        background: #f10000;
+    div::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Track */
+    div::-webkit-scrollbar-track {
+        background: #fff0;
+    }
+
+    /* Handle */
+    div::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 16px;
+    }
+
+    /* Handle on hover */
+    div::-webkit-scrollbar-thumb:hover {
+        background: #555;
     }
 
     .xd {
-        margin-right: 15px;
+        margin-right: 5px;
+    }
+    @-moz-document url-prefix() {
+        .xd {
+            margin-right: 15px;
+        }
+    }
+
+    @keyframes openMenu {
+        0% {
+            max-height: 0px;
+        }
+
+        50% {
+            max-height: 82, 5px;
+        }
+
+        100% {
+            max-height: 165px;
+        }
+    }
+
+    @keyframes closeMenu {
+        0% {
+            max-height: 165px;
+        }
+
+        50% {
+            max-height: 82, 5px;
+        }
+
+        100% {
+            max-height: 0px;
+        }
     }
 </style>
