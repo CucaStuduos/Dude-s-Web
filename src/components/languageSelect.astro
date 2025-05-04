@@ -32,11 +32,12 @@ const { Lang } = Astro.props;
     }
 
     div {
-        max-height: 165px;
+        max-height: 132px;
         overflow-y: scroll;
         border-bottom: 3px solid black;
         animation: openMenu 0.05s linear;
         flex-direction: column;
+        padding-top: 49px;
     }
 
     .divClose {
@@ -89,6 +90,7 @@ const { Lang } = Astro.props;
     .xd {
         margin-right: 5px;
     }
+
     @-moz-document url-prefix() {
         .xd {
             margin-right: 15px;

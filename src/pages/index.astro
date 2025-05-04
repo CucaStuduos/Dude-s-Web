@@ -2,9 +2,11 @@
 export const prerender = false;
 import { getCollection } from "astro:content";
 import LanguageSelect from "../components/languageSelect.astro";
+import MetaElements from "../components/metaElements.astro"
+import ClientRouter from "astro/components/ClientRouter.astro";
 import { date } from "astro:schema";
 
-const currentLang = Astro.cookies.get("lang")?.value;
+const currentLang = Astro.cookies.get("lang")?.value || "en-en";
 let homeBtn = "";
 let projectsBtn = "";
 let videosBtn = "";
@@ -31,8 +33,9 @@ langs.map((lang) => {
 		<meta charset="utf-8" />
 		<script is:inline src="/js/change.JS"></script>
 		<link rel="icon" type="image/svg+xml" href="/images/dude.webp" />
-		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<MetaElements />
+		<ClientRouter />
 		<title>Dude_000</title>
 	</head>
 	<body>
