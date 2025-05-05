@@ -55,31 +55,39 @@ document.addEventListener("DOMContentLoaded", () => {
         loading.classList.remove("none");
         switch (page) {
             case "Home":
+                iframe.style.display = 'none'
                 document.title = "Home - Dude_000";
                 iframe.src = "/pages/" + currentLang + "/home.html";
                 break;
             case "Projects":
+                iframe.style.display = 'none'
                 document.title = "Projects - Dude_000";
                 iframe.src = "/pages/" + currentLang + "/projects.html";
                 break;
             case "Videos":
+                iframe.style.display = 'none'
                 document.title = "Videos - Dude_000";
                 iframe.src = "/pages/" + currentLang + "/videos.html";
                 break;
             case "FAQ":
+                iframe.style.display = 'none'
                 document.title = "FAQ - Dude_000";
                 iframe.src = "/pages/" + currentLang + "/faq.html";
                 break;
             default:
+                iframe.style.display = 'none'
                 document.title = "Not Found - Dude_000"
                 iframe.src = "/pages/" + currentLang + "/404.html"
         }
     }
     iframe.addEventListener("load", () => {
         loading.classList.add("none");
+        iframe.style.display = 'flex';
     });
 
     iframe.addEventListener("loadeddata", () =>{
         loading.classList.add("none");
+        iframe.style.display = 'flex';
+
     })
 });
