@@ -90,4 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
         iframe.style.display = 'flex';
 
     })
+
+
+    const loadBtn = document.getElementById("load");
+
+    loadBtn.addEventListener("click", () => {
+        location.reload();
+    })
 });
